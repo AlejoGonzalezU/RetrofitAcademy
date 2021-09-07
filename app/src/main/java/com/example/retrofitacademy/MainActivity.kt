@@ -9,6 +9,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 class MainActivity : AppCompatActivity(), Callback<DeezerModel> {
     val retrofitBuilder: Retrofit.Builder = Retrofit.Builder()
     val retrofitClient: Retrofit = retrofitBuilder
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity(), Callback<DeezerModel> {
     val services : ApiEndpoints = retrofitClient.create(ApiEndpoints::class.java)
     val obtainDeezer : Call<DeezerModel> = services.getUserPlaylists()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,9 +28,11 @@ class MainActivity : AppCompatActivity(), Callback<DeezerModel> {
         obtainDeezer.enqueue(this)
     }
 
+
     companion object {
         const val BASEURL = "https://api.deezer.com/"
     }
+
 
     override fun onResponse(call: Call<DeezerModel>, response: Response<DeezerModel>) {
         if (response.isSuccessful) {
@@ -38,6 +42,7 @@ class MainActivity : AppCompatActivity(), Callback<DeezerModel> {
             }
         }
     }
+
 
     override fun onFailure(call: Call<DeezerModel>, t: Throwable) {
         Log.e("FAILURE FROM CLIENT", "${t.message}")

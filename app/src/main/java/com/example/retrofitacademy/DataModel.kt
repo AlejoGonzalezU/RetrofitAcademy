@@ -2,6 +2,7 @@ package com.example.retrofitacademy
 
 import com.google.gson.annotations.SerializedName
 
+
 data class DataModel (
 
     @SerializedName("id") val id : Long,
